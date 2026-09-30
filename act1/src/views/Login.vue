@@ -36,3 +36,53 @@ cargando.value = false
 }
 }
 </script>
+<template>
+<main class="pagina-login">
+<section class="tarjeta-login">
+<h1>Iniciar sesión</h1>
+<p class="descripcion">
+Ingresá con tu correo electrónico y contraseña.
+</p>
+<form @submit.prevent="iniciarSesion">
+<div class="campo">
+<label for="correo">Correo electrónico</label>
+<input
+id="correo"
+v-model="correo"
+type="email"
+placeholder="nombre@correo.com"
+autocomplete="email"
+required
+/>
+</div>
+<div class="campo">
+<label for="contrasena">Contraseña</label>
+<input
+id="contrasena"
+v-model="contrasena"
+type="password"
+placeholder="Ingresá tu contraseña"
+autocomplete="current-password"
+required
+/>
+</div>
+<button type="submit" :disabled="cargando">
+{{ cargando ? 'Ingresando...' : 'Ingresar' }}
+</button>
+</form>
+<p
+v-if="mensaje"
+class="mensaje"
+:class="{ exito: inicioExitoso, error: !inicioExitoso }"
+>
+{{ mensaje }}
+</p>
+<p class="enlace-registro">
+¿Todavía no tenés una cuenta?
+<RouterLink to="/registro">
+Registrate
+</RouterLink>
+</p>
+</section>
+</main>
+</template>
