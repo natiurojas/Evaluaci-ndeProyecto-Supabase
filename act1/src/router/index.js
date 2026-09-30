@@ -1,17 +1,44 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import {supabase} from '@/Supabase'
 import Home from '@/views/Home.vue'
 import Contacto from '@/views/Contacto.vue'
 import Registro from '@/views/Registro.vue'
-
-const routes = [
-  { path: '/', name: 'home', component: Home },
-  { path: '/Contacto', name: 'contacto', component: Contacto },
-  { path: '/Registro', name: 'registro', component: Registro },
-]
-
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  routes,
+  routes: [
+    {
+      path: '/',
+      redirect: '/home',
+    },
+    {
+      path: 'login',
+      name: 'login',
+      component: LoginView,
+    },
+    {
+      path: '/registro',
+      name: 'registro',
+      component: RegistroView,
+    },
+    {
+      path: '/inicio',
+      name: 'inicio',
+      component: InicioView,
+      meta: {
+        requiereAutenticacion: true,
+    }
+    router.beforeEach(async (destino)=> {
+      const {
+        data: {session},
+      } = await supabase.auth.getSession()
+      if (destino.meta.requiereAutenticacion && !session){
+        return '/login'
+      }
+      if (
+        session &&
+        (destino.path === '/registro')
+      ){
+        return '/inicio'
+    })
+  ]
 })
-
-export default router
