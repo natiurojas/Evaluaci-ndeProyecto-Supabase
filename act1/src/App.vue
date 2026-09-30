@@ -1,6 +1,7 @@
 <script setup></script>
 
 <template>
+  <routerView />
   <header class="header">
     <router-link to="/" class="logo">Impresión 3D</router-link>
 
