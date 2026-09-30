@@ -50,27 +50,6 @@ type="button"
 </section>
 </main>
 </template>
-      <router-link to="/Registro" class="boton">Crear cuenta</router-link>
-      <router-link to="/Contacto" class="boton secundario">Contactanos</router-link>
-    </div>
-  </section>
-
-  <section class="tarjetas">
-    <article class="tarjeta">
-      <h3>Diseñá tu pieza</h3>
-      <p>Subí tu archivo STL o 3D y lo revisamos antes de imprimir.</p>
-    </article>
-    <article class="tarjeta">
-      <h3>Elegí el material</h3>
-      <p>PLA, ABS, PETG o resina, según lo que necesites.</p>
-    </article>
-    <article class="tarjeta">
-      <h3>Recibí tu pedido</h3>
-      <p>Te avisamos por WhatsApp cuando esté lista para retirar.</p>
-    </article>
-  </section>
-</template>
-
 <style scoped>
 .hero {
   background: #fff;
