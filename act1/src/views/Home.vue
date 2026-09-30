@@ -30,10 +30,26 @@ cerrandoSesion.value = false
 </script>
 
 <template>
+  <main class="pagina-inicio">
+<section class="tarjeta-inicio">
+<div class="icono">✓</div>
   <section class="hero">
-    <h1>Impresión 3D</h1>
-    <p>Diseñá, elegí material y pedí tu pieza impresa.</p>
-    <div class="acciones">
+    <h1>¡Bienvenido!</h1>
+    <p>Iniciaste sesión correctamente</p>
+    <div class="datos-usuario">
+      <span>Usuario Autenticado</span>
+      <strong>{{ correoUsuario }}</strong>
+</div>
+<button
+type="button"
+:disabled="cerrandoSesion"
+@click="cerrarSesion"
+>
+{{ cerrandoSesion ? 'Cerrando...' : 'Cerrar sesión' }}
+</button>
+</section>
+</main>
+</template>
       <router-link to="/Registro" class="boton">Crear cuenta</router-link>
       <router-link to="/Contacto" class="boton secundario">Contactanos</router-link>
     </div>
