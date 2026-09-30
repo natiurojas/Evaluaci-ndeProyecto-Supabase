@@ -55,12 +55,20 @@ async function registrarUsuario() {
     <p class="sub">Registrate para hacer pedidos y ver el estado de tus piezas.</p>
 
     <form @submit.prevent="registrarUsuario">
-      <div class="campo"></div>
+      <div class="campo">
       <label>
         Correo
         <input v-model="correo" type="email" placeholder="tucorreo@mail.com" required />
       </label>
-
+      <input
+id="correo"
+v-model="correo"
+type="email"
+placeholder="nombre@correo.com"
+autocomplete="email"
+required
+/>
+</div>
       <label>
         Contraseña
         <input v-model="clave" type="password" placeholder="Mínimo 6 caracteres" required />
