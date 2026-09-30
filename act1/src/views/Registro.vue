@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import { supabase } from '../Supabase.js'
+import { supabase } from '@/Supabase.js'
 
 const correo = ref('')
 const clave = ref('')
@@ -49,60 +49,58 @@ async function registrarUsuario() {
 </script>
 
 <template>
-  <main class="pagina-registro"></main>
   <section class="card">
     <h1>Crear cuenta</h1>
-    <p class="sub">Registrate para hacer pedidos y ver el estado de tus piezas.</p>
+    <p class="descripcion">Registrate para hacer pedidos y ver el estado de tus piezas.</p>
 
     <form @submit.prevent="registrarUsuario">
       <div class="campo">
-      <label>
-        Correo
-        <input v-model="correo" type="email" placeholder="tucorreo@mail.com" required />
-      </label>
-      <input
-id="correo"
-v-model="correo"
-type="email"
-placeholder="nombre@correo.com"
-autocomplete="email"
-required
-/>
-</div>
-<div class="campo">
-      <label>
-        Contraseña
-        <input v-model="clave" type="password" placeholder="Mínimo 6 caracteres" required />
-      </label>
-      <input
-id="contrasena"
-v-model="contrasena"
-type="password"
-placeholder="Mínimo 6 caracteres"
-autocomplete="new-password"
-required
-/>
-</div>
-<div class="campo">
-      <label>
-        Repetir contrasena
-        <input v-model="conClave" type="password" placeholder="Repetí la contraseña" required />
-      </label>
-      <input
-id="repetir-contrasena"
-v-model="repetirContrasena"
-type="password"
-placeholder="Volvé a escribir la contraseña"
-autocomplete="new-password"
-required
-/>
-</div>
+        <label for="correo">Correo</label>
+        <input
+          id="correo"
+          v-model="correo"
+          type="email"
+          placeholder="nombre@correo.com"
+          autocomplete="email"
+          required
+        />
+      </div>
+
+      <div class="campo">
+        <label for="clave">Contraseña</label>
+        <input
+          id="clave"
+          v-model="clave"
+          type="password"
+          placeholder="Mínimo 6 caracteres"
+          autocomplete="new-password"
+          required
+        />
+      </div>
+
+      <div class="campo">
+        <label for="conClave">Repetir contraseña</label>
+        <input
+          id="conClave"
+          v-model="conClave"
+          type="password"
+          placeholder="Volvé a escribir la contraseña"
+          autocomplete="new-password"
+          required
+        />
+      </div>
+
       <button type="submit" :disabled="cargando">
         {{ cargando ? 'Registrando...' : 'Registrarme' }}
       </button>
     </form>
 
-    <p v-if="mensaje" :class="registroExitoso ? 'ok' : 'error'">{{ mensaje }}</p>
+    <p v-if="mensaje" :class="registroExitoso ? 'exito' : 'error'">{{ mensaje }}</p>
+
+    <p class="enlace-login">
+      ¿Ya tenés cuenta?
+      <router-link to="/login">Ingresá</router-link>
+    </p>
   </section>
 </template>
 
@@ -113,6 +111,7 @@ required
   border-radius: 12px;
   padding: 28px;
   max-width: 480px;
+  margin: 0 auto;
 }
 
 h1 {
@@ -120,7 +119,7 @@ h1 {
   margin-bottom: 6px;
 }
 
-.sub {
+.descripcion {
   color: #6b7280;
   font-size: 15px;
   margin-bottom: 20px;
@@ -132,10 +131,13 @@ form {
   gap: 14px;
 }
 
-label {
+.campo {
   display: flex;
   flex-direction: column;
   gap: 6px;
+}
+
+label {
   font-size: 14px;
   font-weight: 600;
 }
@@ -144,7 +146,6 @@ input {
   padding: 10px 12px;
   border: 1px solid #d1d5db;
   border-radius: 8px;
-  font-weight: 400;
 }
 
 input:focus {
@@ -166,7 +167,7 @@ button:disabled {
   cursor: not-allowed;
 }
 
-.ok {
+.exito {
   margin-top: 16px;
   color: #15803d;
   font-size: 15px;
@@ -176,5 +177,16 @@ button:disabled {
   margin-top: 16px;
   color: #b91c1c;
   font-size: 15px;
+}
+
+.enlace-login {
+  margin-top: 18px;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.enlace-login a {
+  color: #2563eb;
+  font-weight: 600;
 }
 </style>

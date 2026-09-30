@@ -1,14 +1,14 @@
 <script setup></script>
 
 <template>
-  <routerView />
   <header class="header">
     <router-link to="/" class="logo">Impresión 3D</router-link>
 
     <nav class="nav">
-      <router-link to="/">Inicio</router-link>
-      <router-link to="/Contacto">Contacto</router-link>
-      <router-link to="/Registro">Registro</router-link>
+      <router-link to="/inicio">Inicio</router-link>
+      <router-link to="/contacto">Contacto</router-link>
+      <router-link to="/registro">Registro</router-link>
+      <router-link to="/login">Ingresar</router-link>
     </nav>
   </header>
 
