@@ -49,6 +49,7 @@ async function registrarUsuario() {
 </script>
 
 <template>
+  <main class="pagina-registro"></main>
   <section class="card">
     <h1>Crear cuenta</h1>
     <p class="sub">Registrate para hacer pedidos y ver el estado de tus piezas.</p>
