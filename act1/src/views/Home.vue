@@ -1,4 +1,33 @@
-<script setup></script>
+<script setup>
+import { onMounted, ref } from 'vue'
+import { useRouter } from 'vue-router'
+import { supabase } from '@/supabase'
+const router = useRouter()
+const correoUsuario = ref('')
+const cerrandoSesion = ref(false)
+onMounted(async () => {
+const {
+data: { user },
+} = await supabase.auth.getUser()
+if (user) {
+correoUsuario.value = user.email
+}
+})
+async function cerrarSesion() {
+try {
+cerrandoSesion.value = true
+const { error } = await supabase.auth.signOut()
+if (error) {
+throw error
+}
+router.push('/login')
+} catch (error) {
+alert(error.message)
+} finally {
+cerrandoSesion.value = false
+}
+}
+</script>
 
 <template>
   <section class="hero">
