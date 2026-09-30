@@ -83,11 +83,20 @@ autocomplete="new-password"
 required
 />
 </div>
+<div class="campo">
       <label>
-        Repetir contraseña
+        Repetir contrasena
         <input v-model="conClave" type="password" placeholder="Repetí la contraseña" required />
       </label>
-
+      <input
+id="repetir-contrasena"
+v-model="repetirContrasena"
+type="password"
+placeholder="Volvé a escribir la contraseña"
+autocomplete="new-password"
+required
+/>
+</div>
       <button type="submit" :disabled="cargando">
         {{ cargando ? 'Registrando...' : 'Registrarme' }}
       </button>
