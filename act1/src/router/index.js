@@ -39,6 +39,5 @@ const router = createRouter({
         (destino.path === '/registro')
       ){
         return '/inicio'
-    })
-  ]
+    }
 })
