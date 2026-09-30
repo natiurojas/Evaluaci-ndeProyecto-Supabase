@@ -69,11 +69,20 @@ autocomplete="email"
 required
 />
 </div>
+<div class="campo">
       <label>
         Contraseña
         <input v-model="clave" type="password" placeholder="Mínimo 6 caracteres" required />
       </label>
-
+      <input
+id="contrasena"
+v-model="contrasena"
+type="password"
+placeholder="Mínimo 6 caracteres"
+autocomplete="new-password"
+required
+/>
+</div>
       <label>
         Repetir contraseña
         <input v-model="conClave" type="password" placeholder="Repetí la contraseña" required />
